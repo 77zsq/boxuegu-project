@@ -1,1 +1,2 @@
-console.log(123);
+require('../common/header.js');
+require('../common/aside.js');
