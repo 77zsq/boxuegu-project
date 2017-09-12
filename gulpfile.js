@@ -1,3 +1,18 @@
+//使用这些包 直接require('包的名字')
+//这些包都安装在node_modules中
+//在node中（也可以认为是规范的一部分），如果输入字符串 前面没有'/或者 ./ 或者../' 
+//会认为是一个包 会从目录文件夹中找，即node_modules中找
+//每一个包中有入口文件，加载某个js，得到js的返回结果，加载的js中有module.export
+
+//以gulp为例   var gulp = require('gulp');  找到node_modules中的gulp 中的package.json(描述文件)
+//package.json(描述文件)中有main ，没有的话 就找index.js
+//运行index.js脚本 ，拿到 module.exports = inst;  而inst是Gulp构造函数的一个对象 var inst = new Gulp();
+//即我们拿到的是一个Gulp实例
+
+//node包 都是通过require加载东西  通过exports导出东西 但是浏览器不支持 所以有browserify打包
+//有browserify.所有node里面的代码 基本可以放到浏览器执行
+
+
 // 导入各种包
 var gulp = require('gulp');
 var htmlmin = require('gulp-htmlmin');
@@ -110,13 +125,16 @@ gulp.task('js', function() {
 
 
         // 不是gulp.src读取文件，直接通过browserify读取文件打包，因为browserify不是gulp插件
-        //{ debug: true }便于调试
+        //{ debug: true }便于调试  
+        //加了{ debug: true } 在source中查看源代码 能看到压缩的代码  也能看到没有压缩的代码
         //browserify输出的结果和gulp不兼容 所以要借助source buffer转换以兼容gulp
         //才可以继续调用gulp插件 否则输出结果调用不了gulp插件
         browserify(jsPath, { debug: true }).bundle() // 打包index.js
             .pipe(source(jsName))
             .pipe(buffer())
-            // .pipe(uglify())
+            // .pipe(uglify())   加了uglify()  { debug: true }没有用  
+            //uglify()会去掉JS中的注释  { debug: true }靠注释实现
+            //使用 { debug: true }，打包后的文件是由哪几个文件打包的  浏览器有读取 做映射 显示
             .pipe(gulp.dest('dist/' + pathArr.join('/'))); // 数组变成'js/user'
     });
 });
