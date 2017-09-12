@@ -22,16 +22,20 @@ var cleanCss = require('gulp-clean-css');
 var rename = require('gulp-rename');
 var concat = require('gulp-concat');
 var browserify = require('browserify');
-//以下两个是兼容性的包
+//以下两个source buffer是兼容性的包
 var source = require('vinyl-source-stream'); // 这个包可以把普通的数据流转为vinyl对象文件格式
 var buffer = require('vinyl-buffer'); // 这个是把vinyl对象文件中的数据转为buffer方式存储
-
+var htmlReplace = require('gulp-html-replace');
 
 // html处理
 gulp.task('html', function() {
     gulp.src(['src/**/*.html', 'index.html'])
-
-    .pipe(htmlmin({
+        .pipe(htmlReplace({
+            style: gulp.src('src/html/common/style.html'),
+            aside: gulp.src('src/html/common/aside.html'),
+            header: gulp.src('src/html/common/header.html')
+        }))
+        .pipe(htmlmin({
             collapseWhitespace: true, // 去掉空白字符
             minifyJS: true, //压缩页面JS
             minifyCSS: true, //压缩页面CSS
@@ -39,6 +43,8 @@ gulp.task('html', function() {
         }))
         .pipe(gulp.dest('dist'));
 });
+
+
 
 // less处理
 gulp.task('less', function() {
