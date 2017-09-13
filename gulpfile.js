@@ -33,7 +33,9 @@ gulp.task('html', function() {
         .pipe(htmlReplace({
             style: gulp.src('src/html/common/style.html'),
             aside: gulp.src('src/html/common/aside.html'),
-            header: gulp.src('src/html/common/header.html')
+            header: gulp.src('src/html/common/header.html'),
+            courseEditHeader: gulp.src('src/html/common/course/header.html'),
+            courseEditAside: gulp.src('src/html/common/course/aside.html')
         }))
         .pipe(htmlmin({
             collapseWhitespace: true, // 去掉空白字符

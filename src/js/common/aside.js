@@ -16,8 +16,7 @@
 var userinfoStr = localStorage.getItem('userinfo'); //取到字符串
 var userinfo = JSON.parse(userinfoStr); //转成对象
 $('.aside img').attr('src', userinfo.tc_avatar);
-console.log(userinfo.tc_avatar)
-console.log(userinfo.tc_name);
+
 $('.aside h4').text(userinfo.tc_name);
 
 /**
