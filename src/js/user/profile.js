@@ -1,5 +1,7 @@
 require('../common/header.js');
 require('../common/aside.js');
+require('../common/common.js');
+
 /**
  * 该页面功能点：
  * 1、数据回显(用ajax请求数据)  value值 -- 回显

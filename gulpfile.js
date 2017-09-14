@@ -27,6 +27,7 @@ var source = require('vinyl-source-stream'); // 这个包可以把普通的数�
 var buffer = require('vinyl-buffer'); // 这个是把vinyl对象文件中的数据转为buffer方式存储
 var htmlReplace = require('gulp-html-replace');
 
+
 // html处理
 gulp.task('html', function() {
     gulp.src(['src/**/*.html', 'index.html'])
@@ -61,7 +62,8 @@ var jsLibs = [
     'node_modules/art-template/lib/template-web.js',
     'node_modules/jquery/dist/jquery.js',
     'node_modules/bootstrap/dist/js/bootstrap.js',
-    'node_modules/jquery-form/dist/jquery.form.min.js'
+    'node_modules/jquery-form/dist/jquery.form.min.js',
+    'node_modules/jquery.cookie/jquery.cookie.js'
 
 ];
 
