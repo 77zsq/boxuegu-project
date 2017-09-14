@@ -8,8 +8,8 @@
 
 
 var loadingHTNL =
-    '<div class = "overlay">' +
-    '<img src = "public/img/loading.gif"/>' +
+    '<div class="overlay">' +
+    '<img src ="/public/img/loading.gif"/>' +
     '</div>';
 
 $('body').append(loadingHTNL);
