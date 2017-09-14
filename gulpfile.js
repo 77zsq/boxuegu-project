@@ -63,7 +63,8 @@ var jsLibs = [
     'node_modules/jquery/dist/jquery.js',
     'node_modules/bootstrap/dist/js/bootstrap.js',
     'node_modules/jquery-form/dist/jquery.form.min.js',
-    'node_modules/jquery.cookie/jquery.cookie.js'
+    'node_modules/jquery.cookie/jquery.cookie.js',
+    'node_modules/nprogress/nprogress.js'
 
 ];
 

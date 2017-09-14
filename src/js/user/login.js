@@ -1,3 +1,4 @@
+require('../common/loading.js');
 require('../common/common.js');
 
 /**
