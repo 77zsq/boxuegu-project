@@ -24,6 +24,7 @@ $.ajax({
             $('.teacher-profile').html(template('teacher-profile-tpl', data.result));
             /* 请求一个接口（异步）'/v6/teacher/profile', 成功后把template模板放到页面中*/
             /*请求一个接口（异步）代码从上往下执行 ，数据还没有返回 继续往下执行 获取不到表单 */
+            initPlugin();
         }
     }
 });
@@ -50,3 +51,19 @@ $('#teacher-profile-form').ajaxForm({
 // {"code":500,"msg":"Undefined index: tc_id","time":1505212718}
 //提交的时候必须有tc_id字段
 //数据回显的时候拿到tc_id ，提交的时候再传就好了（验证id 能否保持正确 正确修改对应讲师）
+
+/**
+ * 所有的插件初始化都放在这里
+ * */
+function initPlugin() {
+    $('input[name=tc_birthday]').datepicker({
+        language: 'zh-CN',
+        format: 'yyyy-mm-dd',
+        endDate: new Date('2010-01-01')
+    });
+    $('input[name=tc_join_date]').datepicker({
+        language: 'zh-CN',
+        format: 'yyyy-mm-dd',
+        endDate: new Date('2010-01-01')
+    });
+}
